@@ -79,6 +79,7 @@ void SystemApp_Init(void)
   MX_USART2_UART_Init();
   MX_ADC_Init();
   MX_DAC_Init();
+  bsp_dac_init();
   MX_TIM2_Init();
 
   /*Initialize timer and RTC*/
@@ -98,8 +99,7 @@ void SystemApp_Init(void)
 
   HAL_UART_Receive_IT(&huart2, &dbg_rxdata, sizeof(dbg_rxdata)/sizeof(uint8_t));
   ADC_Init(200000, BUFFER_LENGTH);
-  Generate_waveform_SW_update_Config();
-
+  dacl_SetSinWave(4095, 40000);
   /* USER CODE END SystemApp_Init_1 */
 }
 

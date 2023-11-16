@@ -24,12 +24,12 @@
 #include "stm32_seq.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "radio.h"
 /* USER CODE END Includes */
 
 /* External variables ---------------------------------------------------------*/
 /* USER CODE BEGIN EV */
-
+extern uint8_t BufferTx[255];
 /* USER CODE END EV */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,14 +70,14 @@ void MX_SubGHz_Phy_Init(void)
 
   /* USER CODE END MX_SubGHz_Phy_Init_2 */
 }
-extern uint8_t BufferTx[255];
-#include "radio.h"
+
 void MX_SubGHz_Phy_Process(void)
 {
   /* USER CODE BEGIN MX_SubGHz_Phy_Process_1 */
 #if PING_PONG_TESET_ENABLE // 使用ST调度器
 	UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
 #else
+	Radio.Sleep();
 	if (ubDmaTransferStatus == DMA_CONV_COMPLETED)
 	{
 		StopADC();
@@ -104,7 +104,7 @@ void MX_SubGHz_Phy_Process(void)
 		}
 		StartADC(BUFFER_LENGTH);
 	}
-	HAL_Delay(10);
+	HAL_Delay(1000);
 #endif
   /* USER CODE END MX_SubGHz_Phy_Process_1 */
 }

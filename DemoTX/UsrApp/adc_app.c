@@ -73,7 +73,7 @@ static void TIM_Config(uint32_t rate)
 	if(rate >= 10000) // 10k以上高精度计数
 	{
 		htim2.Init.Prescaler = 8000000 / rate - 1; // 10us触发一次
-		htim2.Init.Period = 9 - 1;
+		htim2.Init.Period = 6 - 1;
 	}
 	else if(rate <= 20) //  20Hz以下低频计数
 	{

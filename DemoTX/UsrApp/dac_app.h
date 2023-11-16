@@ -4,10 +4,17 @@
 #include "main.h"
 #include "dac.h"
 
-/* refer to reference manual).  */
-#define DIGITAL_SCALE_12BITS             ((uint32_t) 0xFFF)
+#define WAVE_BUFFER_SIZE	128
 
-void Generate_waveform_SW_update_Config(void);
-void Generate_waveform_SW_update(void);
+/* DAC初始化及基本操做接口函数 */
+void bsp_dac_init(void);
+void bsp_set_dac_value(uint16_t value);
+void bsp_set_dac_voltage(float value);
+
+/* 波形发生接口函数 */
+void dacl_SetSinWave(uint32_t vpp, uint32_t freq);
+void dacl_SetTriWave(uint16_t _low, uint16_t _high, uint32_t freq, uint8_t _duty);
+void dacl_SetRectWave(uint16_t _low, uint16_t _high, uint32_t freq, uint8_t _duty);
+void dacl_SetSawtoothWave(uint16_t _low, uint16_t _high, uint32_t freq);
   
 #endif /* __DAC_APP_H__ */
