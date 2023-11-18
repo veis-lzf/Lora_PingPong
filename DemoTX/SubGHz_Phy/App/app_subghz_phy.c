@@ -80,7 +80,7 @@ void MX_SubGHz_Phy_Process(void)
 	Radio.Sleep();
 	if (ubDmaTransferStatus == DMA_CONV_COMPLETED)
 	{
-		StopADC();
+		//StopADC();
 		APP_LOG(TS_ON, VLEVEL_L, "Master Tx start\n\r");
 		BufferTx[0] = 0x55;
 		BufferTx[1] = 0xaa;
@@ -88,7 +88,7 @@ void MX_SubGHz_Phy_Process(void)
 		BufferTx[3] = (g_peakValue & 0xff);
 		BufferTx[4] = BufferTx[0] ^ BufferTx[1] ^ BufferTx[2] ^ BufferTx[3];
 		Radio.Send(BufferTx, 5);
-		StartADC(BUFFER_LENGTH);
+		//StartADC(BUFFER_LENGTH);
 		ubDmaTransferStatus = DMA_NOT_CONV_COMPLETED;
 	}
 	HAL_Delay(1000);

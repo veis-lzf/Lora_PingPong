@@ -98,8 +98,8 @@ void SystemApp_Init(void)
 #endif /* LOW_POWER_DISABLE */
 
   HAL_UART_Receive_IT(&huart2, &dbg_rxdata, sizeof(dbg_rxdata)/sizeof(uint8_t));
-  ADC_Init(200000, BUFFER_LENGTH);
-  dacl_SetSinWave(4095, 40000);
+  ADC_Init(300000, BUFFER_LENGTH);
+  dacl_SetSinWave(4095, 400000);
   /* USER CODE END SystemApp_Init_1 */
 }
 

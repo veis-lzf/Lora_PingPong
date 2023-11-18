@@ -42,11 +42,11 @@ void ADC_Init(uint32_t rate, uint32_t length)
 // 启动ADC转换
 void StartADC(uint32_t length)
 {
-	if (HAL_ADCEx_Calibration_Start(&hadc) != HAL_OK)
-	{
-		/* Calibration Error */
-		Error_Handler();
-	}
+//	if (HAL_ADCEx_Calibration_Start(&hadc) != HAL_OK)
+//	{
+//		/* Calibration Error */
+//		Error_Handler();
+//	}
 	if (HAL_ADC_Start_DMA(ADC_HANDLE, (uint32_t *)uhADCDualConvertedValue, length) != HAL_OK)
 	{
 		/* ADC conversion start error */
@@ -73,7 +73,7 @@ static void TIM_Config(uint32_t rate)
 	if(rate >= 10000) // 10k以上高精度计数
 	{
 		htim2.Init.Prescaler = 8000000 / rate - 1; // 10us触发一次
-		htim2.Init.Period = 6 - 1;
+		htim2.Init.Period = 2 - 1;
 	}
 	else if(rate <= 20) //  20Hz以下低频计数
 	{

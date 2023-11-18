@@ -157,7 +157,7 @@ static void dac1_initfor_dma(uint32_t buffer_addr, uint32_t count, uint32_t freq
 	
 	/* 定时器配置 */
 	__HAL_RCC_TIM1_CLK_ENABLE();
-	// APB1 timer时钟=sysclk，当主频为48MHz时，APB1的定时器时钟为84MHz
+	// APB1 timer时钟=sysclk，当主频为48MHz时，APB1的定时器时钟为48MHz
 	tim_clk =  SystemCoreClock;
 	// 配置的定时器触发频率 / DMA的缓冲个数 = 输出波形频率
 	freq = freq * count / 10;
