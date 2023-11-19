@@ -291,9 +291,14 @@ static void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t LoraS
   RssiValue = rssi;
   /* Record payload content*/
   APP_LOG(TS_ON, VLEVEL_L, "payload. size=%d \n\r", size);
+  uint32_t count = 0;
+  count  = (BufferRx[2] << 24) | (BufferRx[3] << 16) | (BufferRx[4] << 8) | BufferRx[5];
+  APP_LOG(TS_OFF, VLEVEL_L, "count value:%d \n\r", count);
+#if ADC_TESE_ENABLE
   char strBuf[64] = {0};
   sprintf(strBuf, "%.3f", ((BufferRx[2] << 8) | BufferRx[3])/4096.0 * 3.3f + 0.2);
   APP_LOG(TS_OFF, VLEVEL_L, "Peek value:%s \n\r", strBuf);
+#endif
 //  for (int32_t i = 0; i < PAYLOAD_LEN; i++)
 //  {
 //    APP_LOG(TS_OFF, VLEVEL_L, "%02X", BufferRx[i]);

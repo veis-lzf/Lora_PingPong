@@ -3,7 +3,7 @@
 <title>Static Call Graph - [DemoRX\DemoRX.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image DemoRX\DemoRX.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 15 23:48:50 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Nov 19 20:13:43 2023
 <BR><P>
 <H3>Maximum Stack Usage =        328 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -610,8 +610,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
-<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SetFlashLatency
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_StopModeWakeUpSourceConfig
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SetFlashLatency
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
@@ -719,12 +719,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_PLL_IsReady
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_MSI_IsReady
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_HSI_IsReady
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_HSE_IsReady
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetSysClkSource
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -776,6 +776,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PWR_EnableBkUpAccess
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SetFlashLatencyFromMSIRange
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_PLL_IsReady
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_PLL_GetMainSource
@@ -793,7 +794,6 @@ Global Symbols
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_HSE_DisableTcxo
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetSysClkSource
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_IsEnabledBkUpAccess
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
@@ -922,12 +922,12 @@ Global Symbols
 <P><STRONG><a name="[ed]"></a>HAL_SUBGHZ_ExecGetCmd</STRONG> (Thumb, 136 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_ExecGetCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_ExecGetCmd &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Receive
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_IRQHandler
 <LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_GetRxBufferStatus
@@ -938,11 +938,11 @@ Global Symbols
 <P><STRONG><a name="[f4]"></a>HAL_SUBGHZ_ExecSetCmd</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_ExecSetCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_ExecSetCmd &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_IRQHandler
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_SetTxParams
@@ -1004,10 +1004,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_SUBGHZ_Init &rArr; HAL_SUBGHZ_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_MspInit
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Init
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_RF_DisableReset
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SetRadioBusyTrigger
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SUBGHZ_Init
 </UL>
@@ -1030,12 +1030,12 @@ Global Symbols
 <P><STRONG><a name="[104]"></a>HAL_SUBGHZ_ReadBuffer</STRONG> (Thumb, 144 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_ReadBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_ReadBuffer &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Receive
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_ReadBuffer
 </UL>
@@ -1043,12 +1043,12 @@ Global Symbols
 <P><STRONG><a name="[105]"></a>HAL_SUBGHZ_ReadRegisters</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_ReadRegisters))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_ReadRegisters &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Receive
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_ReadRegisters
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_ReadRegister
@@ -1081,11 +1081,11 @@ Global Symbols
 <P><STRONG><a name="[106]"></a>HAL_SUBGHZ_WriteBuffer</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_WriteBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_WriteBuffer &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_WriteBuffer
 </UL>
@@ -1093,11 +1093,11 @@ Global Symbols
 <P><STRONG><a name="[107]"></a>HAL_SUBGHZ_WriteRegisters</STRONG> (Thumb, 138 bytes, Stack size 32 bytes, stm32wlxx_hal_subghz.o(i.HAL_SUBGHZ_WriteRegisters))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = HAL_SUBGHZ_WriteRegisters &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_CheckDeviceReady
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZSPI_Transmit
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_WriteRegisters
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGRF_WriteRegister
@@ -1483,9 +1483,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_UnselectSUBGHZSPI_NSS
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_PWR_SelectSUBGHZSPI_NSS
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SUBGHZ_WaitOnBusy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_WriteRegisters
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_WriteBuffer
@@ -1837,8 +1837,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = SUBGRF_SetSleep &rArr; Radio_SMPS_Set &rArr; SUBGRF_WriteRegister &rArr; HAL_SUBGHZ_WriteRegisters &rArr; SUBGHZ_CheckDeviceReady &rArr; HAL_Delay &rArr; TIMER_IF_DelayMs &rArr; TIMER_IF_Convert_ms2Tick &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RBI_ConfigRFSwitch
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_ExecSetCmd
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Radio_SMPS_Set
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SUBGHZ_ExecSetCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RadioSleep
 </UL>
@@ -2609,7 +2609,7 @@ Local Symbols
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTCEx_SSRUEventCallback
 </UL>
 
-<P><STRONG><a name="[54]"></a>OnRxDone</STRONG> (Thumb, 204 bytes, Stack size 32 bytes, subghz_phy_app.o(i.OnRxDone))
+<P><STRONG><a name="[54]"></a>OnRxDone</STRONG> (Thumb, 194 bytes, Stack size 32 bytes, subghz_phy_app.o(i.OnRxDone))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = OnRxDone &rArr; UTIL_ADV_TRACE_COND_FSend &rArr; tiny_vsnprintf_like &rArr; ee_number
 </UL>
 <BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UTIL_SEQ_SetTask
@@ -2775,9 +2775,9 @@ Local Symbols
 <P><STRONG><a name="[d1]"></a>RCC_SetFlashLatencyFromMSIRange</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, stm32wlxx_hal_rcc.o(i.RCC_SetFlashLatencyFromMSIRange))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = RCC_SetFlashLatencyFromMSIRange &rArr; RCC_SetFlashLatency &rArr; HAL_GetTick &rArr; TIMER_IF_GetTimerValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SetFlashLatency
+<BR>[Calls]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PWREx_GetVoltageRange
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SetFlashLatency
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetAHB3Prescaler
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PWREx_GetVoltageRange
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 </UL>

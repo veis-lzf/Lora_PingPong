@@ -1,0 +1,12 @@
+demorx\stm32_adv_trace_if.o: ../Core/Src/stm32_adv_trace_if.c
+demorx\stm32_adv_trace_if.o: ../Utilities/trace/adv_trace/stm32_adv_trace.h
+demorx\stm32_adv_trace_if.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+demorx\stm32_adv_trace_if.o: ../Core/Inc/utilities_conf.h
+demorx\stm32_adv_trace_if.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+demorx\stm32_adv_trace_if.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+demorx\stm32_adv_trace_if.o: ../Utilities/misc/stm32_mem.h
+demorx\stm32_adv_trace_if.o: ../Core/Inc/utilities_conf.h
+demorx\stm32_adv_trace_if.o: ../Utilities/misc/stm32_tiny_vsnprintf.h
+demorx\stm32_adv_trace_if.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+demorx\stm32_adv_trace_if.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+demorx\stm32_adv_trace_if.o: ../Core/Inc/stm32_adv_trace_if.h
