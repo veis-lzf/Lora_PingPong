@@ -56,12 +56,19 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+#if ADC_TEST_ENABLE
 extern DMA_HandleTypeDef hdma_adc;
 extern ADC_HandleTypeDef hadc;
+#endif
+
+#if DAC_TEST_ENABLE
 extern DAC_HandleTypeDef hdac;
+extern TIM_HandleTypeDef htim2;
+#endif
+
 extern RTC_HandleTypeDef hrtc;
 extern SUBGHZ_HandleTypeDef hsubghz;
-extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim16;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 
@@ -221,11 +228,11 @@ void TAMP_STAMP_LSECSS_SSRU_IRQHandler(void)
 void DMA1_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
-
+#if ADC_TEST_ENABLE
   /* USER CODE END DMA1_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_adc);
   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
-
+#endif
   /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
 
@@ -235,11 +242,11 @@ void DMA1_Channel1_IRQHandler(void)
 void ADC_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC_IRQn 0 */
-
+#if ADC_TEST_ENABLE
   /* USER CODE END ADC_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc);
   /* USER CODE BEGIN ADC_IRQn 1 */
-
+#endif
   /* USER CODE END ADC_IRQn 1 */
 }
 
@@ -249,11 +256,11 @@ void ADC_IRQHandler(void)
 void DAC_IRQHandler(void)
 {
   /* USER CODE BEGIN DAC_IRQn 0 */
-
+#if DAC_TEST_ENABLE
   /* USER CODE END DAC_IRQn 0 */
   HAL_DAC_IRQHandler(&hdac);
   /* USER CODE BEGIN DAC_IRQn 1 */
-
+#endif
   /* USER CODE END DAC_IRQn 1 */
 }
 
@@ -263,12 +270,26 @@ void DAC_IRQHandler(void)
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-
+#if DAC_TEST_ENABLE
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
-
+#endif
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM16 Global Interrupt.
+  */
+void TIM16_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM16_IRQn 0 */
+
+  /* USER CODE END TIM16_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim16);
+  /* USER CODE BEGIN TIM16_IRQn 1 */
+
+  /* USER CODE END TIM16_IRQn 1 */
 }
 
 /**
@@ -314,6 +335,18 @@ void SUBGHZ_Radio_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+/**
+  * @brief This function handles SUBGHZ Radio Interrupt.
+  */
+void EXTI2_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI2_IRQHandler 0 */
 
+  /* USER CODE END EXTI2_IRQHandler 0 */
+  HAL_GPIO_EXTI_IRQHandler(EXT_INPUT_Pin);
+  /* USER CODE BEGIN EXTI2_IRQHandler 1 */
+  
+  /* USER CODE END EXTI2_IRQHandler 1 */
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

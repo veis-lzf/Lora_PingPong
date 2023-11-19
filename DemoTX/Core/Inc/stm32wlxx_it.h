@@ -60,6 +60,7 @@ void DMA1_Channel1_IRQHandler(void);
 void ADC_IRQHandler(void);
 void DAC_IRQHandler(void);
 void TIM2_IRQHandler(void);
+void TIM16_IRQHandler(void);
 void USART2_IRQHandler(void);
 void RTC_Alarm_IRQHandler(void);
 void SUBGHZ_Radio_IRQHandler(void);
