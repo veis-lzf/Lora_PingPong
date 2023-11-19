@@ -54,13 +54,15 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 static uint8_t SYS_TimerInitialisedFlag = 0;
-uint16_t g_peakValue;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
+#if ADC_TEST_ENABLE
+uint16_t g_peakValue;
 void ADC_Conv_Process(void);
 static uint16_t CalcPeek(uint16_t *pbuf, uint32_t len);
+#endif
 /* USER CODE END PFP */
 
 /* Exported functions ---------------------------------------------------------*/
@@ -77,11 +79,22 @@ void SystemApp_Init(void)
 	
   MX_DMA_Init();
   MX_USART2_UART_Init();
+	
+#if ADC_TEST_ENABLE
   MX_ADC_Init();
+#endif
+	
+#if DAC_TEST_ENABLE
   MX_DAC_Init();
   bsp_dac_init();
   MX_TIM2_Init();
+#endif
 
+  // 启动定时器中断，默认1s一次
+  InitCaptureTimer(1000);
+  // 使能外部中断，默认下降沿触发
+  InitExitCapture(e_Falling);
+	
   /*Initialize timer and RTC*/
   UTIL_TIMER_Init();
   SYS_TimerInitialisedFlag = 1;
@@ -98,8 +111,14 @@ void SystemApp_Init(void)
 #endif /* LOW_POWER_DISABLE */
 
   HAL_UART_Receive_IT(&huart2, &dbg_rxdata, sizeof(dbg_rxdata)/sizeof(uint8_t));
+  
+#if ADC_TEST_ENABLE
   ADC_Init(300000, BUFFER_LENGTH);
+#endif
+
+#if DAC_TEST_ENABLE
   dacl_SetSinWave(4095, 400000);
+#endif
   /* USER CODE END SystemApp_Init_1 */
 }
 
@@ -109,6 +128,8 @@ void SystemApp_Init(void)
 
 /* Private functions ---------------------------------------------------------*/
 /* USER CODE BEGIN PrFD */
+
+#if ADC_TEST_ENABLE
 static uint16_t CalcPeek(uint16_t *pbuf, uint32_t len)
 {
 	uint16_t min, max;
@@ -127,9 +148,10 @@ static uint16_t CalcPeek(uint16_t *pbuf, uint32_t len)
 void ADC_Conv_Process(void)
 {
 	g_peakValue = CalcPeek((uint16_t *)uhADCDualConvertedValue, BUFFER_LENGTH);
-	p_info("ADC_Conv_Process completed!,g_peakValue=%d", g_peakValue);
+	//p_info("ADC_Conv_Process completed!,g_peakValue=%d", g_peakValue);
 	ubDmaTransferStatus = DMA_CONV_COMPLETED;
 }
+#endif
 /* USER CODE END PrFD */
 /* HAL overload functions ---------------------------------------------------------*/
 

@@ -28,7 +28,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#if ADC_TEST_ENABLE
 /* USER CODE END Includes */
 
 extern DAC_HandleTypeDef hdac;
@@ -40,7 +40,7 @@ extern DAC_HandleTypeDef hdac;
 void MX_DAC_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+#endif
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

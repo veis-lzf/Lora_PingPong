@@ -28,7 +28,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#if ADC_TEST_ENABLE
 /* USER CODE END Includes */
 
 extern ADC_HandleTypeDef hadc;
@@ -40,7 +40,7 @@ extern DMA_HandleTypeDef hdma_adc;
 void MX_ADC_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+#endif
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

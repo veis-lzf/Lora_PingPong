@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>CORE_CM4,USE_HAL_DRIVER,STM32WL55xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc; ../Drivers/STM32WLxx_HAL_Driver/Inc; ../Drivers/STM32WLxx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32WLxx/Include; ../Drivers/CMSIS/Include; ..\UsrApp; ../Utilities/trace/adv_trace; ../Utilities/misc; ../Utilities/sequencer; ../Utilities/timer; ../Utilities/lpm/tiny_lpm; ../Middlewares/Third_Party/SubGHz_Phy; ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver;../SubGHz_Phy/App;../SubGHz_Phy/Target</IncludePath>
+              <IncludePath>../Core/Inc;  ../Drivers/STM32WLxx_HAL_Driver/Inc;  ../Drivers/STM32WLxx_HAL_Driver/Inc/Legacy;  ../Drivers/CMSIS/Device/ST/STM32WLxx/Include;  ../Drivers/CMSIS/Include;  ..\UsrApp;  ../Utilities/trace/adv_trace;  ../Utilities/misc;  ../Utilities/sequencer;  ../Utilities/timer;  ../Utilities/lpm/tiny_lpm;  ../Middlewares/Third_Party/SubGHz_Phy;  ../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver; ../SubGHz_Phy/App; ../SubGHz_Phy/Target</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -628,6 +628,16 @@
               <FileType>1</FileType>
               <FilePath>..\UsrApp\dac_app.c</FilePath>
             </File>
+            <File>
+              <FileName>tim_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UsrApp\tim_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>exit_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UsrApp\exit_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -659,14 +669,14 @@
           <GroupName>Middlewares/SubGHz_Phy</GroupName>
           <Files>
             <File>
-              <FileName>radio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.c</FilePath>
-            </File>
-            <File>
               <FileName>radio_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>radio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Middlewares/Third_Party/SubGHz_Phy/stm32_radio_driver/radio.c</FilePath>
             </File>
           </Files>
         </Group>

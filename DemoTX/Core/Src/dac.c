@@ -21,7 +21,7 @@
 #include "dac.h"
 
 /* USER CODE BEGIN 0 */
-
+#if DAC_TEST_ENABLE
 /* USER CODE END 0 */
 
 DAC_HandleTypeDef hdac;
@@ -128,7 +128,7 @@ void HAL_DAC_MspDeInit(DAC_HandleTypeDef* dacHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

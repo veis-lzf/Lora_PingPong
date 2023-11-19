@@ -1,6 +1,8 @@
 #include "adc_app.h"
 #include "debug.h"
 
+#if ADC_TEST_ENABLE
+
 /* DMA缓冲区变量 ----------------------------------------------------------------------*/
 __IO uint16_t uhADCDualConvertedValue[BUFFER_LENGTH];		// ADC采集缓冲区大小
 __IO uint16_t uhADCDualConver = 0;
@@ -131,3 +133,5 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc_x)
 		//p_info("----------");
 	}
 }
+
+#endif /* ADC_TEST_ENABLE */

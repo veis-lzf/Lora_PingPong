@@ -243,7 +243,8 @@ void SubghzApp_Init(void)
   /*register task to to be run in while(1) after Radio IT*/
   UTIL_SEQ_RegTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process), UTIL_SEQ_RFU, PingPong_Process);
 #endif
-
+  // Ä¬ÈÏÐÝÃß
+  Radio.Sleep();
   /* USER CODE END SubghzApp_Init_2 */
 }
 

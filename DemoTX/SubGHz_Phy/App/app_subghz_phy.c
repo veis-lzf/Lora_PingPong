@@ -30,6 +30,7 @@
 /* External variables ---------------------------------------------------------*/
 /* USER CODE BEGIN EV */
 extern uint8_t BufferTx[255];
+extern volatile uint8_t TimFlag; // 定时器定时标记
 /* USER CODE END EV */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,6 +78,8 @@ void MX_SubGHz_Phy_Process(void)
 #if PING_PONG_TESET_ENABLE // 使用ST调度器
 	UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
 #else
+
+#if ADC_TEST_ENABLE
 	Radio.Sleep();
 	if (ubDmaTransferStatus == DMA_CONV_COMPLETED)
 	{
@@ -91,8 +94,45 @@ void MX_SubGHz_Phy_Process(void)
 		//StartADC(BUFFER_LENGTH);
 		ubDmaTransferStatus = DMA_NOT_CONV_COMPLETED;
 	}
+
 	HAL_Delay(1000);
-#endif
+#endif /* ADC_TEST_ENABLE */
+	if(TimFlag)
+	{
+		p_dbg_track;
+		uint32_t count = GetTickCount();
+		uint16_t index = 0;
+		
+		// 赋值协议头
+		BufferTx[index++] = 0x55;
+		BufferTx[index++] = 0xaa;
+		
+		// 计数值为4字节
+		BufferTx[index++] = (count >> 24) & 0xff;
+		BufferTx[index++] = (count >> 16) & 0xff;
+		BufferTx[index++] = (count >> 8) & 0xff;
+		BufferTx[index++] = count & 0xff;
+		BufferTx[index] = 0;
+		
+		// 计算校验和
+		for(int i = 0; i < index; i++)
+			BufferTx[index] ^= BufferTx[i];
+		
+		// 通过Lora发送数据
+		Radio.Send(BufferTx, index);
+		
+		HAL_Delay(50);
+		// 重新进入休眠
+		Radio.Sleep();
+		
+		// 清除计数，重新启动捕获和定时器
+		clearTickCount();
+		TimFlag = 0;
+		startExitCapture();
+		StartCaptureTimer();
+		p_dbg_track;
+	}
+#endif /* PING_PONG_TESET_ENABLE */
 	
 #if USE_ADC_SOURCEDATA_TEST
 	if(ubDmaTransferStatus == DMA_CONV_COMPLETED)

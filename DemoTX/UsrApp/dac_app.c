@@ -1,5 +1,7 @@
 #include "dac_app.h"
 
+#if DAC_TEST_ENABLE
+
 TIM_HandleTypeDef htim1;
 DMA_HandleTypeDef hdma_dac1;
 
@@ -402,3 +404,5 @@ void dacl_SetSawtoothWave(uint16_t _low, uint16_t _high, uint32_t freq)
 	}
 	dac1_initfor_dma((uint32_t)&g_usWaveBuff, WAVE_BUFFER_SIZE, freq);
 }
+
+#endif

@@ -35,6 +35,8 @@ extern "C" {
 #include "dma.h"
 #include "tim.h"
 #include "rtc.h"
+#include "tim_app.h"
+#include "exit_app.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
