@@ -103,6 +103,8 @@ bool isMaster = true;
 /* the closest the random delays are, the longer it will
    take for the devices to sync when started simultaneously*/
 static int32_t random_delay;
+
+extern volatile uint8_t TxDoneFlag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -257,7 +259,7 @@ static void OnTxDone(void)
 {
   /* USER CODE BEGIN OnTxDone */
   APP_LOG(TS_ON, VLEVEL_L, "OnTxDone");
-	
+  TxDoneFlag = 1;
 #if PING_PONG_TESET_ENABLE
   /* Update the State of the FSM*/
   State = TX;

@@ -31,6 +31,10 @@
 /* USER CODE BEGIN EV */
 extern uint8_t BufferTx[255];
 extern volatile uint8_t TimFlag; // 定时器定时标记
+// 发送完成标记，1：发送完成
+volatile uint8_t TxDoneFlag;
+// 发送超时
+#define MAX_TIMEOUT		0xffffff
 /* USER CODE END EV */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,6 +106,7 @@ void MX_SubGHz_Phy_Process(void)
 		p_dbg_track;
 		uint32_t count = GetTickCount();
 		uint16_t index = 0;
+		uint32_t timeout = 0;
 		
 		// 赋值协议头
 		BufferTx[index++] = 0x55;
@@ -120,10 +125,17 @@ void MX_SubGHz_Phy_Process(void)
 		
 		// 通过Lora发送数据
 		Radio.Send(BufferTx, index);
+		while(!TxDoneFlag) // 等待发送完成
+		{
+			if(timeout++ > MAX_TIMEOUT)
+			{
+				break;
+			}
+		}
 		
-		HAL_Delay(50);
 		// 重新进入休眠
 		Radio.Sleep();
+		TxDoneFlag = 0;
 		
 		// 清除计数，重新启动捕获和定时器
 		clearTickCount();

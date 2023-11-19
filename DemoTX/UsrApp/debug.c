@@ -18,7 +18,7 @@ STRUCT_USARTx_Fram dbg_Fram_Record =
 };
 
 // µ÷ÊÔµÈ¼¶
-int dbg_level = Monitor;
+int dbg_level = Release;
 extern uint8_t *pname;
 static int OnCfgDebug(uint32_t vp_Type, uint32_t vp_P1, uint32_t vp_P2, uint32_t vp_P3)
 {
