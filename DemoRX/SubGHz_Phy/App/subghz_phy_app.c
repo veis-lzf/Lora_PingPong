@@ -291,14 +291,17 @@ static void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t LoraS
   RssiValue = rssi;
   /* Record payload content*/
   APP_LOG(TS_ON, VLEVEL_L, "payload. size=%d \n\r", size);
-  for (int32_t i = 0; i < PAYLOAD_LEN; i++)
-  {
-    APP_LOG(TS_OFF, VLEVEL_L, "%02X", BufferRx[i]);
-    if (i % 16 == 15)
-    {
-      APP_LOG(TS_OFF, VLEVEL_L, "\n\r");
-    }
-  }
+  char strBuf[64] = {0};
+  sprintf(strBuf, "%.3f", ((BufferRx[2] << 8) | BufferRx[3])/4096.0 * 3.3f + 0.2);
+  APP_LOG(TS_OFF, VLEVEL_L, "Peek value:%s \n\r", strBuf);
+//  for (int32_t i = 0; i < PAYLOAD_LEN; i++)
+//  {
+//    APP_LOG(TS_OFF, VLEVEL_L, "%02X", BufferRx[i]);
+//    if (i % 16 == 15)
+//    {
+//      APP_LOG(TS_OFF, VLEVEL_L, "\n\r");
+//    }
+//  }
   APP_LOG(TS_OFF, VLEVEL_L, "\n\r");
   /* Run PingPong process in background*/
   UTIL_SEQ_SetTask((1 << CFG_SEQ_Task_SubGHz_Phy_App_Process), CFG_SEQ_Prio_0);
